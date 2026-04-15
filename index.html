@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Портфолио</title>
+    <style>
+        /* Базовые настройки и переменные */
+        :root {
+            --bg-color: #0a0a0a;
+            --text-color: #f0f0f0;
+            --accent-color: #e50914; /* Красный в стиле The Boys/Hitman */
+            --accent-glow: rgba(229, 9, 20, 0.6);
+            --card-bg: #1a1a1a;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            overflow-x: hidden;
+        }
+
+        /* Анимации при скролле */
+        .hidden {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 0.8s ease-out;
+        }
+
+        .show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Шапка сайта */
+        header {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            background: radial-gradient(circle at center, #1f1f1f1e 0%, var(--bg-color) 50%),
+                        url("ламба.jpg");
+            padding: 2rem;
+        }
+
+        h1 {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            animation: textGlow 2s infinite alternate;
+        }
+
+        h2 {
+            font-size: 1.5rem;
+            color: #aaa;
+            font-weight: 300;
+        }
+
+        @keyframes textGlow {
+            from { text-shadow: 0 0 10px transparent; }
+            to { text-shadow: 0 0 20px var(--accent-glow); }
+        }
+
+        /* Секция "Обо мне" */
+        .about-section {
+            padding: 5rem 2rem;
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+            font-size: 1.2rem;
+            line-height: 1.6;
+        }
+
+        .about-section p {
+            margin-bottom: 1rem;
+        }
+
+        .highlight {
+            color: var(--accent-color);
+            font-weight: bold;
+        }
+
+        /* Галерея Портфолио */
+        .portfolio-section {
+            padding: 5rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            text-transform: uppercase;
+            border-bottom: 2px solid var(--accent-color);
+            display: inline-block;
+            padding-bottom: 0.5rem;
+            position: relative;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .card {
+            background-color: var(--card-bg);
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+        }
+
+        .card:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 15px 40px var(--accent-glow);
+        }
+
+
+        .card-img-placeholder {
+            width: 100%;
+            height: 400px;
+            background-color: #2a2a2a;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #555;
+            font-style: italic;
+            overflow: hidden;
+        }
+
+        /* Если будешь вставлять фото, они будут вести себя так */
+        .card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .card:hover img {
+            transform: scale(1.1);
+        }
+
+        .card-content {
+            padding: 1.5rem;
+            position: relative;
+            z-index: 2;
+            background: linear-gradient(to top, var(--card-bg) 80%, transparent);
+        }
+
+        .card-title {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+            color: var(--accent-color);
+        }
+
+        .card-text {
+            font-size: 1rem;
+            color: #ccc;
+        }
+
+        /* Футер */
+        footer {
+            text-align: center;
+            padding: 3rem;
+            background-color: #050505;
+            color: #777;
+            margin-top: 5rem;
+        }
+
+    </style>
+</head>
+<body>
+
+    <header class="hidden">
+        <h1>Портфолио</h1>
+        <h2>Косплеер | 16 лет | Ростов-на-Дону</h2>
+    </header>
+
+    <section class="about-section hidden">
+        <p>Добро пожаловать в мой мир! Мне 16 лет, я живу в <span class="highlight">Ростове-на-Дону</span> и профессионально увлекаюсь косплеем.</p>
+        <p>Я обожаю аниме и могу часами обсуждать детали костюмов супергероев (особенно фанатею от сериала <span class="highlight">The Boys</span>). Перевоплощение в любимых персонажей для меня — это не просто хобби, а способ выразить себя.</p>
+        <p>А когда мне нужен перерыв от крафта, я отправляюсь в <span class="highlight">Дагестан</span>. Горы, свежий воздух и невероятная атмосфера — это то, что заряжает меня энергией для новых проектов.</p>
+    </section>
+
+    <section class="portfolio-section">
+        <h2 class="section-title hidden">Мои работы и жизнь</h2>
+        
+        <div class="gallery">
+            <div class="card hidden">
+                <div class="card-img-placeholder">
+                    <img src="хитмен.jpg" alt="хитмен">
+                </div>
+                <div class="card-content">
+                    <h3 class="card-title">Агент 47</h3>
+                    <p class="card-text">Ничего лишнего. Строгий костюм, красный галстук, ледяное спокойствие и фирменный штрих-код. Идеальное выполнение контракта.</p>
+                </div>
+            </div>
+
+            <div class="card hidden" style="transition-delay: 0.2s;">
+                <div class="card-img-placeholder">
+                    <img src="джоджо.jpg" alt="джо">
+                </div>
+                <div class="card-content">
+                    <h3 class="card-title">Yare Yare Daze</h3>
+                    <p class="card-text">Невероятные приключения ДжоДжо. Эпичные позы, пафос и стиль, который невозможно перепутать ни с чем другим. Stand Proud!</p>
+                </div>
+            </div>
+
+            <div class="card hidden" style="transition-delay: 0.4s;">
+                <div class="card-img-placeholder">
+                    <img src="плов.jpg" alt="хитмен">
+                </div>
+                <div class="card-content">
+                    <h3 class="card-title">Выше облаков</h3>
+                    <p class="card-text">Мое место силы. Жарю идеальный плов в казане на вершине горы в Дагестане. Природа, которая вдохновляет на новые свершения.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 ЖОПА. Все права защищены. Создано с любовью к косплею и баранам.</p>
+    </footer>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const observerOptions = {
+                root: null,
+                rootMargin: '0px',
+                threshold: 0.15
+            };
+
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('show');
+                        observer.unobserve(entry.target); // Анимация срабатывает один раз
+                    }
+                });
+            }, observerOptions);
+
+            const hiddenElements = document.querySelectorAll('.hidden');
+            hiddenElements.forEach((el) => observer.observe(el));
+        });
+    </script>
+</body>
+</html>
